@@ -8,6 +8,17 @@ async function main() {
   const passwordHash = await bcrypt.hash("Admin123!", 10);
   const userHash = await bcrypt.hash("User123!", 10);
 
+  await prisma.priceHistory.deleteMany();
+  await prisma.trade.deleteMany();
+  await prisma.position.deleteMany();
+  await prisma.dispute.deleteMany();
+  await prisma.resolution.deleteMany();
+  await prisma.ammPool.deleteMany();
+  await prisma.market.deleteMany();
+  await prisma.wallet.deleteMany();
+  await prisma.user.deleteMany();
+  await prisma.auditLog.deleteMany();
+
   const admin = await prisma.user.create({
     data: {
       email: "admin@insight.com",
